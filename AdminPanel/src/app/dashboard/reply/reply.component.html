@@ -1,0 +1,37 @@
+<div class=row>
+	<div class="col-5 shadow"  >
+
+		<h2 class="bg-myHead">{{replyTo}}</h2>
+
+		<div *ngFor="let r of resUserMsg" class="bg-myBody">
+		
+	<!-- // hold user msg -->
+		<div class="text-left" *ngIf="r.name!='Admin manish'; else admin">
+			{{r.msg}}
+		</div>	
+
+   <!-- //hold admin message -->
+   <ng-template #admin>
+		<div class="text-right text-info">
+			{{r.msg}}
+		</div>
+</ng-template>
+
+		</div>
+		
+
+
+
+		<form [formGroup]="adminReply" >
+		<textarea id="chatbox" placeholder="enter your message here" class="bg-myTextarea" cols="49" formControlName="admintext"></textarea>
+		<br>
+
+		<button (click)="adminSend()" class="btn btn-success btn-sm">Send</button>
+
+		</form>
+
+	</div>
+
+	
+
+</div>

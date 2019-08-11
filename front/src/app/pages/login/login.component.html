@@ -1,0 +1,90 @@
+<!-- <h1> Signin / Signup Form</h1> -->
+<br>
+<div class="container" id="container" [class.right-panel-active]="isActive">
+
+  <div class="form-container sign-up-container">
+    <form [formGroup]="mySignUpForm" (ngSubmit)="signUp()">
+      <h1>Create Account</h1>
+      <div class="social-container">
+        <a href="#" class="social"><i class="fa fa-facebook-official"
+         style="font-size: 30px ;padding-right:20px;"></i></a>
+        <a href="#" class="social"><i class="fa fa-google-plus-official"
+          style="font-size: 30px; padding-right:20px;"></i></a>
+        <a href="#" class="social"><i class="fa fa-linkedin-square"
+          style="font-size: 30px; padding-right:20px;"></i></a>
+      </div>
+      <span>or use your email for registration</span>
+      <input (keypress)="clearSuccessMessage()" type="text" placeholder="Name" formControlName="upName"/>
+      <!-- <div *ngIf="mySignUpForm.controls.upName.invalid && mySignUpForm.controls.upName.touched" class="alert">
+        <div  *ngIf="mySignUpForm.controls.upName.errors.required">
+          *Required
+          </div>
+      </div> -->
+      <input type="email" (keypress)="clearSuccessMessage()" placeholder="Email" formControlName="upEmail" autocomplete="false" />
+      <!-- <div *ngIf="mySignUpForm.controls.upEmail.invalid && mySignUpForm.controls.upEmail.touched" class=" alert-danger">
+        <div  *ngIf="mySignUpForm.controls.upEmail.errors.required">
+          *Required
+          </div> -->
+      <input type="password" placeholder="Password" formControlName="upPassword"/>
+      <div *ngIf="signupSuccessMessage" class="alert alert-success">
+          Registered Successfully :)
+      </div>
+      <div *ngIf="signupFailMessage" class="alert alert-danger">
+        unable to register try using different Email :(
+    </div>
+      <button type="submit"  class="mybutton" [disabled]="mySignUpForm.invalid">Sign Up</button>
+    </form>
+  </div>
+
+
+  <div class="form-container sign-in-container">
+
+    <form [formGroup]="mySignInForm" (ngSubmit)="signIn()">
+
+      <h1 class="pb-2">Sign in</h1>
+      <div class="social-container">
+        <a href="#" class="social"><i class="fa fa-facebook-official"
+         style="font-size: 30px ;padding-right:20px;"></i></a>
+        <a href="#" class="social"><i class="fa fa-google-plus-official"
+          style="font-size: 30px; padding-right:20px;"></i></a>
+        <a href="#" class="social"><i class="fa fa-linkedin-square"
+          style="font-size: 30px; padding-right:20px;"></i></a>
+      </div>
+      <span>or use your account</span>
+      <input (click)="clearErr()" type="email" placeholder="Email" autocomplete="false" formControlName="inEmail" />
+      <input type="password" placeholder="Password" formControlName="inPassword"/>
+      <div class="alert alert-danger" *ngIf="signinErr">Your email or password is incorrect</div>
+      <a href="#">Forgot your password?</a>
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="ghost" id="signIn" (click)="signInSlide()">Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>New to E-Shop</h1>
+        <p>Enter your personal details and start journey with us</p>
+        <button class="ghost" id="signUp" (click)="signUpSlide()">Sign Up</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- <app-header></app-header> -->
+
+<!-- <footer>
+  <p>
+    Created with <i class="fa fa-heart"></i> by
+    <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+    - Read how I created this and how you can join the challenge
+    <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+  </p>
+</footer> -->
+
+
+

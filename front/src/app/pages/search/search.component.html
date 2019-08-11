@@ -1,0 +1,38 @@
+ 
+<div *ngIf="noDataFound">
+	<p class="text-center text-danger " style="font-size: 24px;">Sorry , No Data Found  </p>
+	<img src="assets/profile/images/nosearchdata.png" height="350px">
+</div>
+
+
+ <div class="row">
+ <!-- /Product Single -->
+ <div class="product product-single col-4"  *ngFor="let s of searchData">
+    <div class="product-thumb">
+      <div class="product-label">
+        <span class="sale">-20%</span>
+      </div>
+
+      <button routerLink="/product/{{s._id}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Details</button>
+      <img src="http://localhost:7788/images/{{s.image}}" alt="" >
+    </div>
+    <div class="product-body">
+      <h3 class="product-price">{{s.price | currency :'INR'}} <del class="product-old-price">Offer</del></h3>
+      <div class="product-rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o empty"></i>
+      </div>
+      <h2 class="" ><a style="font-size:17px; font-weight: bold; " href="#">{{s.brand}}</a></h2>
+      <h2 class="product-name"><a href="#">{{s.pname}}</a></h2>
+      <div class="product-btns">
+        <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+        <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+        <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  <!-- /product single -->
+</div>

@@ -1,0 +1,8 @@
+<h1> Users requesting to chat</h1>
+<br>
+<h5>S.no  <span class="pl-3">Name</span></h5>
+<hr>
+<div *ngFor="let r of resUserData ,let i =index" class="row">
+	<div class="col-4">{{i+1}} <span class="pl-5"> {{r.name}} </span>  </div>
+	<a class="text-success col-3" (click)="reply(r.email)">Reply</a>
+</div>

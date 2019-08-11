@@ -1,0 +1,122 @@
+
+<h1>Products</h1>
+<br>
+
+<form [formGroup]="myForm">
+<div class="form-group">
+	<div class="pr-4"><label>Select Category </label></div>
+	<select name="Category" formControlName="category"
+	 class="form-control col-xl-2 col-sm-2 col-lg-2 col-sm-2 col-6" (click)="proFilter()" >
+	<option selected="selected" value="" >All</option>	
+	<option *ngFor="let ca of categoryArr" value="{{ca}}" selected="selected" >
+
+		{{ca}}
+		</option>
+		
+	</select>
+</div>
+</form>
+
+<br>
+
+<div class="pr-4  pb-3">
+<button type="button" class="btn btn-success" routerLink="../addproduct">
+  Add Products
+</button>
+</div>
+<div class="container-fluid row">
+<table class="table table-bordered">
+	<tr class="table-primary">
+		<th>Sr.no.</th>
+		<th>Product Name</th>
+		<th>Brand</th>
+		<th>Product Category</th>
+		<th>Price</th>
+		<th colspan="3">Description</th>
+		<th>Image</th>
+		<th>Date_Created</th>
+		<th>Action</th>
+	</tr>
+
+	<tr *ngFor="let p of proData; let i=index">
+		
+		<td *ngIf="p.productCategory == proCat ">{{i+1}}</td>
+		<td *ngIf="proCat == notSelected">{{i+1}}</td>
+
+		<td *ngIf="p.productCategory == proCat">{{p.pname}}</td>
+		<td *ngIf="proCat == notSelected">{{p.pname}}</td>
+
+		<td *ngIf="p.productCategory == proCat">{{p.brand}}</td>
+		<td *ngIf="proCat == notSelected">{{p.brand}}</td>
+
+		<td *ngIf="p.productCategory == proCat">{{p.productCategory}}</td>
+		<td *ngIf="proCat == notSelected">{{p.productCategory}}</td>
+
+		<td *ngIf="p.productCategory == proCat">{{p.price |currency}}</td>
+		<td *ngIf="proCat == notSelected">{{p.price |currency}}</td>
+
+		<td colspan="3" *ngIf="p.productCategory == proCat">{{p.description | readmore :80}} .... <button (click)="readmore(c.description)"class="btn btn-link" style="color: #00ACC1">Read more</button></td>
+		<td  colspan="3" *ngIf="proCat == notSelected">{{p.description | readmore :80}}....  <button (click)="readmore(c.description)"class="btn btn-link" style="color: #00ACC1">Read more</button></td>
+
+		<td *ngIf="p.productCategory == proCat"><img src="http://localhost:7788/images/{{p.image}}" height="60px"/></td>
+
+
+		<td *ngIf="proCat == notSelected"> <!-- //show image in modal -->
+
+
+			<!-- <img src="http://localhost:7788/images/{{p.image}}" height="60px"/> -->
+
+			<!-- ////// -->
+								<button type="button" class="" data-toggle="modal" (click)="lrgImgPath(p.image)" data-target="#exampleModalLong">
+				<img src="http://localhost:7788/images/{{p.image}}" height="60px">	  
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLongTitle">{{p.image}}</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				      <div *ngIf="p.image">
+				       <img [src]="path" height="310px">
+				      </div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+
+			<!-- /////// -->
+
+		</td>
+
+		<td *ngIf="p.productCategory == proCat">{{p.date_created | date:'medium'}}</td>
+		<td *ngIf="proCat == notSelected">{{p.date_created | date:'medium'}}</td>
+
+		<td *ngIf="p.productCategory == proCat">
+			<div class="btn-group "> 
+			<a class="btn btn-sm  mybtn-warning">Modify <i class="fa fa-pencil-square-o"></i></a>  
+			<a class="btn btn-sm mybtn-danger" >Remove <i class="fa fa-trash"></i></a> 
+			</div>
+		</td>
+
+		<td *ngIf="proCat == notSelected">
+			<div class="btn-group "> 
+			<a class="btn btn-sm  mybtn-warning" routerLink="../editproduct/{{p._id}}" >Modify <i class="fa fa-pencil-square-o"></i></a> 
+
+			<a class="btn btn-sm mybtn-danger" (click)="delpro(p._id)">Remove <i class="fa fa-trash"></i></a> 
+			</div>
+		</td>
+		
+	</tr>	
+</table>
+</div>

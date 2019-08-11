@@ -1,0 +1,17 @@
+.bg-myTextarea{
+	background-color: #dfe1e48a;
+	padding:3px;
+}
+.bg-myHead{
+	background-color: #5aa5f4f5;
+	padding:3px;
+}
+.bg-myBody{
+	background-color: #dcdcdcb5;
+	padding:3px;
+}
+
+#shadow{
+	/*font: bold 30px century Gothic;*/
+	text-shadow:rgb(110,110,110) 2px 2px 3px;
+}

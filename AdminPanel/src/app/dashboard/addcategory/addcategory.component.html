@@ -1,0 +1,56 @@
+<h1>Add Category</h1>
+<div class="row">
+	<form [formGroup]="myForm" (ngSubmit)="addFormCategory()" class="col-8">
+		<div class="form-group">
+			<label>Category Name</label>
+			<input type="text" name="" formControlName="cname" class="form-control"/>
+			<div *ngIf="myForm.controls.cname.invalid && myForm.controls.cname.touched" class="alert alert-danger">
+				<div *ngIf="myForm.controls.cname.errors.required">
+					*Required
+				</div>
+				
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Description</label>
+			<textarea formControlName="description" class="form-control" rows="5"></textarea>
+			<div *ngIf="myForm.controls.description.invalid && myForm.controls.description.touched" class="alert alert-danger">
+				<div *ngIf="myForm.controls.description.errors.required">
+					*Required
+				</div>
+				
+			</div>
+		</div>
+		<!-- <div class="form-group">
+				<label>Image</label>
+				<input type="file" name="" class="form-control" (change)="fileUpload($event)">
+		</div> -->
+		<span style="color:red;" *ngIf="message">{{message}}</span>
+		<input #file type="file" accept='image/*' (change)="preview(file.files); fileUpload($event);" />
+		
+		
+		<br/>
+		<div class="text-right">
+		<input type="submit" value="Submit" class="btn btn-success m-t-10" [disabled]="myForm.invalid">
+		</div>
+	</form>
+
+
+	<div class="col-4 ">
+		<span style="color:red;" *ngIf="message">{{message}}</span>
+		<div class="p-t-40">	<img  [src]="imgURL" height="200" *ngIf="imgURL">
+			<p *ngIf="imgName">
+				
+				<span class="text-info font-weight-bold">Name : </span>{{imgName}}
+				<span class="text-info font-weight-bold">Size : </span>{{imgSize}} bits
+			</p>
+		</div>
+		
+		<div class="p-t-200"  *ngIf="!imgName" >  <p class="alert alert-danger text-center ">
+			No Image selected
+		</p>   </div>
+		
+		
+	</div>
+	
+</div>

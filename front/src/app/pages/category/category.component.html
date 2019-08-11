@@ -1,0 +1,31 @@
+ <div class="row">
+ <!-- /Product Single -->
+ <div class="product product-single col-4"  *ngFor="let p of resData">
+    <div class="product-thumb">
+      <div class="product-label">
+        <span class="sale">-20%</span>
+      </div>
+
+      <button routerLink="/product/{{p._id}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Details</button>
+      <img src="http://localhost:7788/images/{{p.image}}" alt="" >
+    </div>
+    <div class="product-body">
+      <h3 class="product-price">{{p.price | currency :'INR'}} <del class="product-old-price">Offer</del></h3>
+      <div class="product-rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o empty"></i>
+      </div>
+      <h2 class="" ><a style="font-size:17px; font-weight: bold; " href="#">{{p.brand}}</a></h2>
+      <h2 class="product-name"><a href="#">{{p.pname}}</a></h2>
+      <div class="product-btns">
+        <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+        <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+        <button routerLink="/product/{{p._id}}" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Get This</button>
+      </div>
+    </div>
+  </div>
+  <!-- /product single -->
+</div>

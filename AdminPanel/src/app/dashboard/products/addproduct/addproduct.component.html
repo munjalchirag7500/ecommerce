@@ -1,0 +1,86 @@
+<h1>Add Products</h1>
+<br>
+<div class="row">
+<form [formGroup]="myForm" (ngSubmit)="addProduct()" class="col-8">
+
+<div class="form-group">
+	<div class="pr-4"><label>Select Category </label></div>
+	<select name="Category" formControlName="category" class="form-control col-xl-3 col-sm-3 col-lg-3 col-sm-3 col-8">
+		<option selected="selected" value="">Not Selected</option>
+		<option *ngFor="let c of catNameData" value="{{c.cname}}" selected="selected" >{{c.cname}}</option>
+		
+	</select>
+</div>
+<div class="form-group">
+	<label>Product Name</label>
+	<input type="text" formControlName="pname" class="form-control">
+	<div *ngIf="myForm.controls.pname.invalid && myForm.controls.pname.touched" class="alert alert-danger">
+		<div *ngIf="myForm.controls.pname.errors.required">
+			*Required
+		</div>
+		
+	</div>
+</div>
+<div class="form-group">
+	<label>Brand</label>
+	<input type="text" name="" formControlName="brand" class="form-control">
+	<div *ngIf="myForm.controls.brand.invalid && myForm.controls.brand.touched" class="alert alert-danger">
+		<div *ngIf="myForm.controls.brand.errors.required">
+			*Required
+		</div>
+		
+	</div>
+</div>
+<div class="form-group">
+	<label>Price(in Rs.)</label>
+	<input type="text" name="" formControlName="price" class="form-control">
+	<div *ngIf="myForm.controls.price.invalid && myForm.controls.price.touched" class="alert alert-danger">
+		<div *ngIf="myForm.controls.price.errors.required">
+			*Required
+		</div>
+		<div *ngIf="myForm.controls.price.errors.pattern">
+			Enter valid price
+		</div>
+		
+	</div>
+</div>
+<div class="form-group">
+	<label>Description</label>
+	<textarea formControlName="description" class="form-control" rows="5"></textarea>
+	<div *ngIf="myForm.controls.description.invalid && myForm.controls.description.touched" class="alert alert-danger">
+		<div *ngIf="myForm.controls.description.errors.required">
+			*Required
+		</div>
+		
+	</div>
+</div>
+
+<div class="form-group">
+	<label>Image</label>
+	<input  #file accept='image/*' type="file" name="" class="form-control"
+	 (change)="preview(file.files); fileUpload($event);"/>
+</div>
+
+<div class="text-right">
+<button class="btn btn-success" [disabled]="myForm.invalid">Submit</button>
+</div>
+
+</form>
+
+<div class="col-4 ">
+		<span style="color:red;" *ngIf="message">{{message}}</span>
+		<div class="p-t-285">	<img  [src]="imgURL" height="200" *ngIf="imgURL">
+			<p *ngIf="imgName">
+				
+				<span class="text-info font-weight-bold">Name : </span>{{imgName}}
+				<span class="text-info font-weight-bold">Size : </span>{{imgSize}} bits
+			</p>
+		</div>
+		
+		<div class="p-t-200"  *ngIf="!imgName" >  <p class="alert alert-danger text-center ">
+			No Image selected
+		</p>   </div>
+		
+		
+</div>
+</div>

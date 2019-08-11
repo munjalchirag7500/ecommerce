@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <h3 class="text-center">User Detail</h3>
+
+    <br>
+    <table class="table table-light">
+        <thead class="thead-dark">
+            <tr>
+                <th>S.no</th>
+                <th>User Name</th>
+                <th>Status</th>
+                <th>Total Orders</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="userData">
+            <tr *ngFor="let u of userData,let i = index">
+                <td>{{i+1}}</td>
+                <td>{{u.upname}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,28 @@
+<h3>
+	Your Orders 
+</h3>
+<hr>
+<div *ngFor="let o of orderData">
+    <div class="row">
+    	<div class="col-2">
+    		<img src="http://localhost:7788/images/{{o.image}}" height="100px">
+    	</div>
+    	<div class="col-10">
+    		<p>ProductName : {{o.pname}}</p>
+    		<p>Brand : {{o.brand}}</p>
+    		<p>Price : {{o.price}}</p>
+    		
+    		<!-- <p>OrderId : {{orderId}}</p> -->
+            <p>Order Date : {{o.date_created | date:'fullDate'}}</p>
+
+
+    	</div>
+    </div>
+	<hr>
+
+</div>
+
+<!-- <p>Expected Delivery Date : {{deliveryDate | date:'fullDate'}}</p> -->
+
+<p class="text-info" style="font-size: 14px">Delivery Address : {{deliveryAdd}}</p>
+

@@ -1,0 +1,37 @@
+<!-- /myproduct Single -->
+
+
+<div class="myproduct myproduct-single"  *ngFor="let p of resData">
+    <div class="row">
+    <div class="myproduct-thumb col-8">
+      <div class="myproduct-label" style="padding-left:15px; ">
+        <span class="sale">-20%</span>
+      </div>
+      <img src="http://localhost:7788/images/{{p.image}}" alt="" >
+    </div>
+    <div class="myproduct-body col-4">
+      <h3 class="myproduct-price">{{p.price | currency :'INR'}} <del class="myproduct-old-price">Offer</del></h3>
+      <div class="myproduct-rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o empty"></i>
+      </div>
+      <h2 class="" ><a style="font-size:17px; font-weight: bold; " href="#">{{p.brand}}</a></h2>
+      <h2 class="myproduct-name"><a href="#">{{p.pname}}</a></h2>
+      <hr>
+      <div class="">
+        <h2>Description</h2>
+        {{p.description}}
+      </div>
+      <div class="myproduct-btns">
+          <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+          <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+          <button  (click)="addToCart(p)"   class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- /myproduct single -->

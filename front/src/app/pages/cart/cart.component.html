@@ -1,0 +1,46 @@
+<body >
+<h1>Cart</h1>
+<br>
+
+
+<div class="row" [ngClass]="bg" >
+    <!-- /Product Single -->
+    <div class="product product-single col-4"  *ngFor="let c of cartData">
+       <div class="product-thumb">
+         <div class="product-label">
+           <span class="sale">-20%</span>
+         </div>
+   
+         <!-- <button routerLink="/product/{{c._id}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Details</button> -->
+         <img src="http://localhost:7788/images/{{c.image}}" alt="" >
+       </div>
+       <div class="product-body">
+         <h3 class="product-price">{{c.price | currency :'INR'}} <del class="product-old-price">Offer</del></h3>
+         <div class="product-rating">
+           <i class="fa fa-star"></i>
+           <i class="fa fa-star"></i>
+           <i class="fa fa-star"></i>
+           <i class="fa fa-star"></i>
+           <i class="fa fa-star-o empty"></i>
+         </div>
+         <h2 class="" ><a style="font-size:17px; font-weight: bold; " href="#">{{c.brand}}</a></h2>
+         <h2 class="product-name"><a href="#">{{c.pname}}</a></h2>
+         <div class="product-btns">
+           <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+           <!-- <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button> -->
+           <button (click)="removeFromCart(c._id)" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Remove from Cart</button>
+         </div>
+       </div>
+     </div>
+     <!-- /product single -->
+   </div>
+   <div class="row">
+     <div class="col-9" >
+      <p style=" font-size:25px; font-weight:400; color:black"> Total amount to be paid (including all taxes) :  {{totalCost | currency :'INR'}}</p>
+     </div>
+   <div class="shopping-cart-btns text-right col-3">
+      <button (click)="order()" class="primary-btn" >Checkout <i class="fa fa-arrow-circle-right"></i> <br><small style=" font-size:10px">Only COD available</small></button>
+   </div>
+  </div>
+  </body>
+

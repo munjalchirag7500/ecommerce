@@ -1,0 +1,79 @@
+<div class="container-fluid">
+<header class="position-fixed sticky-top">
+	<nav class="navbar navbar-expand-lg navbar-dark  bg-primary">
+  <a class="navbar-brand" href="#"><i class="fa fa-tachometer p-r-4" style="font-size:40px"></i><span style="font-size:30px">Dashboard</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link">Welcome {{username | uppercase}} <i class="fa fa-user-circle-o p-r-4" style="font-size:20px"></i><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  routerLink="changepassword">Change Password  <i class="fa fa-unlock-alt p-l-2" style="font-size:20px"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logOut()">Logout <i class="fa fa-power-off p-r-2" style="font-size:20px"></i> </a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0" type="submit">
+        <i class="fa fa-search" style="font-size:20px"></i>
+      </button>
+    </form>
+  </div>
+</nav>
+</header>
+
+<!-- section begin -->
+<br>
+<section>
+
+	<div class="row">
+
+		<aside class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <!-- use myfixed-top in the div below to make its position fixed -->
+				<div class="nav flex-column nav-pills bg-secondary  " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+					<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" routerLink="./" role="tab" aria-controls="v-pills-home" aria-selected="true">
+            <i class="fa fa-home p-r-3" style="font-size:25px"></i>  Home
+          </a>
+
+					<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" routerLink="category" role="tab" aria-controls="v-pills-profile" aria-selected="false"> <i class="fa fa-th-list p-r-3" style="font-size:20px"></i>Category
+          </a>
+
+					<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" routerLink="products" role="tab" aria-controls="v-pills-messages" aria-selected="false"> <i class="fa fa-folder-open p-r-3" style="font-size:20px"></i>Products
+          </a>
+
+          <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" routerLink="feedback" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-comments p-r-3" style="font-size:20px"></i>Feedback
+          </a>
+
+					<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="javascript:void(0)" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-cogs p-r-3" style="font-size:20px"></i>Settings
+          </a>
+
+					<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" routerLink="chat" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-clock-o p-r-3" style="font-size:20px"></i>Users Chat</a>
+
+					<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-gift" style="font-size:23px;padding-right:3px; "></i>Orders Received
+          </a>
+
+					<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" routerLink="userlog" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-database p-r-3" style="font-size:20px"></i>User Logs 
+          </a>
+          <hr>
+          <div class="p-l-10 text-light">{{currentDate | date:'fullDate'}}</div>
+
+				</div>
+			
+		</aside>
+
+		<aside class="col-xl-10 col-lg-10 col-md-10 col-sm-10 ">
+			<router-outlet></router-outlet>
+		</aside>
+	</div>
+</section>
+
+<!-- footer begin -->
+
+</div>

@@ -1,0 +1,186 @@
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="assets/profile/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="assets/profile/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/profile/css/jquery-ui.css">
+    <link rel="stylesheet" href="assets/profile/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/profile/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/profile/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="assets/profile/css/jquery.fancybox.min.css">
+
+    <!-- <link rel="stylesheet" href="assets/profile/css/bootstrap-datepicker.css"> -->
+
+    <link rel="stylesheet" href="assets/profile/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="assets/profile/css/aos.css">
+
+    <link rel="stylesheet" href="assets/profile/css/style.css">
+
+    <!-- ----------------------------------------------- -->
+    <br>
+    <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" >
+  
+  <div class="site-wrap">
+<div class="" id="home-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 mr-auto" >
+            <h1 class="animated fadeInLeft  text-dark" >{{username}}</h1>
+            <p style="font-size: 14px" class="mb-5 animated fadeInRight ">{{email}}</p>
+            <hr>
+            <div *ngIf="notUpdated == true; else updated">
+               
+              <button    class="btn btn-danger py-3 px-5">Update profile</button>
+               <div style="font-size: 14px"  class="card card-body card-danger" >
+              Scroll down and fill the details given below to complete your profile so
+              that you can order your first product.
+                </div>
+
+<!-- // -->
+<!-- // -->
+
+
+
+
+            
+          
+          
+            </div>
+
+            <ng-template #updated>
+                <p><button    class="btn nav-link btn-outline-light py-3 px-5">Updated</button></p>
+                <div class="text-dark" style="font-size: 14px">
+              <h3 class="animated fadeInLeft slower">Mobile : </h3>
+               <div class="animated fadeInRight slower">{{profileMob}} </div>
+
+               <h3 class="animated fadeInLeft slower">D.O.B : </h3>
+                <div class="animated fadeInRight slower">{{profileDOB | date:'long'}}</div>
+                <h3 class="animated fadeInLeft slower">Home Address : </h3>
+                <div class="animated fadeInRight slower"> {{profileAdd}}</div>
+          </div>
+            </ng-template>
+
+          </div>
+          <div class="col-lg-2 ml-auto"  >
+            <figure class="img-absolute">
+              <img [src]="profilePic" alt="Image" class=" "  height="500px">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="site-section section-2"  *ngIf="notUpdated == true">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5">
+            <span style="font-size: 14px" class="section-sub-title d-block">UPDATE</span>
+            <h2 class="section-title">YOUR PROFILE</h2>
+            
+            <form [formGroup]="address">
+              <div class="form-group" style="font-size: 20px">
+            <label>Home Address</label>
+
+            <input style="font-size: 14px" type="text" name="" placeholder="City" class="form-control" formControlName="city"/>
+
+            <input style="font-size: 14px" type="text" name="" placeholder="Street" class="form-control" formControlName="street"/>
+            
+            <input style="font-size: 14px" type="text" name="" placeholder="Area PIN" class="form-control" formControlName="pin"/>
+
+            </div>
+            </form>
+          </div>
+          <!-- // img display-->
+             <div style="padding-left: 30px;">
+                    <span style="color:red;" *ngIf="message">{{message}}</span>
+                    <div class="p-t-40">  <img  [src]="imgURL" height="200" *ngIf="imgURL">
+                      <p *ngIf="imgName">
+                        
+                        <span class="text-info font-weight-bold">Name : </span>{{imgName}}
+                        <span class="text-info font-weight-bold">Size : </span>{{imgSize}} bits
+                      </p>
+                    </div>
+                    
+                    <div class="col-3"  *ngIf="!imgName" >  
+                      <img src="assets/profile/images/profile.png" height="225px">
+                     </div>
+                  
+    
+                </div>
+          <!-- //img dispaly -->
+        </div>
+        <div class="row">
+          <div class="col-lg-4"  >
+            <div class="process p-3">
+              <div>
+                <span class="flaticon-glasses display-4 text-primary mb-4 d-inline-block">Mobile</span>
+                <!-- <h3>Research</h3> -->
+                <form class="example-form" [formGroup]="mobile" style="font-size: 16px">
+                        <mat-form-field class="example-full-width">
+                          <input (click)="clearFormInv()" matInput placeholder="Contact no." value="e.g 7017991909" formControlName="num">
+                        </mat-form-field>
+                </form>
+
+               
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-4" >
+            <div class="process p-3">
+              <span class="number">02</span>
+              <div>
+                <span class="flaticon-vector display-4 text-primary mb-4 d-inline-block">Date of Birth</span>
+                <!-- <h3>Building</h3> -->
+                
+                <mat-form-field style="font-size: 16px" [formGroup]="date">
+                  <input (click)="clearFormInv()" matInput [matDatepicker]="picker" class="example-full-width" placeholder="Choose a date" formControlName="dob">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                </mat-form-field>
+
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-4" >
+            <div class="process p-3">
+              <span class="number">03</span>
+              <div>
+                <span class="flaticon-monitor display-4 text-primary mb-4 d-inline-block">Profile Photo</span>
+               <!--  <h3>Launch</h3> -->
+               <form>
+                <label >select image</label>
+               
+               <input #file style="font-size: 12px" type="file" accept='image/*' (change)="preview(file.files); fileUpload($event);" /> 
+               </form>
+              
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="formInvalid" class="alert-danger alert" col-6>
+      Fill all the details correctly, All fields are mandatory
+    </div>
+
+    <div *ngIf="notUpdated == true" class="text-right"> <button [disabled]="address.invalid" [disabled]="mobile.invalid" [disabled]="date.invalid"   (click)="updateProfile()" class="btn nav-link btn-outline-success py-3 col-3 px-5">Update Profile Details</button></div>
+
+
+
+
+
+</body>
+    <!-- ------------------------------------------------------- -->
+
+ 

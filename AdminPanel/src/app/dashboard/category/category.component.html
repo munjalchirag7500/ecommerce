@@ -1,0 +1,70 @@
+<h1 class="flip">Categories</h1>
+<br>
+<div class="pb-3">
+<a routerLink="../addcategory" class="btn btn-success " >Add Category </a>
+</div>
+<table class="table  table-bordered" >
+	<tr class="table-primary">
+		<th>S.no. </th>
+		<th>Category Name </th>
+		<th colspan="2">Description </th>
+		<th>Image </th>
+		<th>Date_Created </th>
+		<th>Action </th>
+	</tr>
+	<tr *ngFor="let c of catData; let i = index">
+		<td>{{i+1}} </td>
+		<td>{{c.cname}} </td>
+		<td colspan="2">{{c.description | readmore : 40 }} ....<button (click)="readmore(c.description)"class="btn btn-link" style="color: #00ACC1">Read more</button> </td>
+		<td>
+				<!-- Button trigger modal -->
+				<button type="button" class="" data-toggle="modal" (click)="lrgImgPath(c.image)" data-target="#exampleModalLong">
+				<img src="http://localhost:7788/images/{{c.image}}" height="60px">	  
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLongTitle">{{c.image}}</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				      <div *ngIf="c.image">
+				       <img [src]="path" height="310px">
+				      </div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+		 </td>
+
+		<td>{{c.date_created | date:'medium'}} </td>
+		<td class="btn-group ">
+
+			<a class="btn btn-sm mybtn-warning" routerLink="../editcategory/{{c._id}}" >Modify <i class="fa fa-pencil-square-o"></i></a>  
+			 <a class="btn btn-sm mybtn-danger " (click)="delcat(c._id)">Remove <i class="fa fa-trash"></i></a> 
+		</td>
+
+	</tr>
+
+<!-- 	<tr *ngIf="catData.length==0">
+        <td colspan=6 class="text-center text-danger">
+            No category found
+        </td>
+    </tr> -->
+
+
+
+
+
+
+</table>

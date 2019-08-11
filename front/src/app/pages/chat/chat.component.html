@@ -1,0 +1,51 @@
+<br>
+<div class="row">
+
+
+
+			<div class="col-5 animated slideInLeft" height="200px" >
+
+<cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+
+		<div *ngFor="let r of resUserMsg"    #scrollMe [scrollTop]="scrollMe.scrollHeight">
+		
+	<!-- // hold user msg -->
+		<div style="margin-left:15px; padding-bottom:5px; ">
+		<div class="text-left bg-info" *ngIf="r.name=='Admin manish'; else user"  style="padding-bottom:5px; margin-right:50px; ">
+			{{r.msg}}
+			<br>
+			<small style="font-size:8px">{{r.date_sent | date :'short'}}</small>
+		</div>
+		</div>	
+
+   <!-- //hold admin message -->
+   <ng-template #user>
+   		<div style="margin-right:15px;">
+		<div class="text-right   bg-success " style="padding-bottom:5px; margin-left: 50px; ">
+			{{r.msg}}
+			<br>
+			<small style="font-size:8px">{{r.date_sent | date :'short'}}</small>
+		</div>
+		</div>
+</ng-template>
+
+		</div>
+<br>
+		</cdk-virtual-scroll-viewport>
+			
+		
+				<hr>
+			  <mat-form-field [formGroup]="userMessage" class=example-container>
+   				 <textarea id="chatbox" matInput placeholder="type your message" (keydown.enter)="userSend()" formControlName="usertext"></textarea>
+  			  </mat-form-field>
+  			  <br>
+			 <button (click)="userSend()" [disabled]="userMessage.invalid" mat-raised-button color="primary">Send</button>
+
+	</div>
+
+
+	<div class="col-7"  >
+		<img src="assets/img/chatimg.png" height="400px" class="animated slideInRight" style="padding-left:50px ">
+	</div>
+
+</div>
