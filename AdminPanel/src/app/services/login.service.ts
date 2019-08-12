@@ -20,5 +20,8 @@ url="http://localhost:7788/api/";
   getuserlog(){
     return this.http.get(this.url+'userlog');
   }
+  adminSignData(data){
+		return this.http.post(this.url+'signup',data);
+  }
 
 }

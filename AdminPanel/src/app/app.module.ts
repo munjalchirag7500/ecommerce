@@ -25,6 +25,7 @@ import { ChatComponent } from './dashboard/chat/chat.component';
 import { ReplyComponent } from './dashboard/reply/reply.component';
 import { UserlogComponent } from './pages/userlog/userlog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SignupComponent } from './pages/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReadmorePipe,
     ChatComponent,
     ReplyComponent,
-    UserlogComponent
+    UserlogComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

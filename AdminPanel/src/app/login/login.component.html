@@ -1,26 +1,30 @@
 <div id="logreg-forms">
-		<form class="form-signin form-group" [formGroup]="myForm" (ngSubmit)="loginData()">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Admin Login</h1>
-            <label>Email</label>
-            <input type="email" formControlName="name" class="form-control" placeholder="Email address" required autofocus="">
-			<div *ngIf="myForm.controls.name.touched && myForm.controls.name.invalid" class="alert alert-danger">
-					<div *ngIf="myForm.controls.name.errors.required" >
-						*Required
-					</div>
-				</div>
-			<br/>
-			<label>Password</label>
-			
-			<input type="password" formControlName="pass" class="form-control" placeholder="Password" required>
-			<div *ngIf="myForm.controls.pass.touched && myForm.controls.pass.invalid" class="alert alert-danger">
-					<div *ngIf="myForm.controls.pass.errors.required" >
-						*Required
-					</div>
-				</div>
-			<br/>
-            <button class="btn btn-primary btn-block" type="submit" [disabled]="myForm.invalid"><i class="fas fa-sign-in-alt"></i> Sign in</button>
-            
-             </form>
-        <br>
-        <hr>
-    </div>
+	<form class="form-signin form-group" [formGroup]="myForm" (ngSubmit)="loginData()">
+		<h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Admin Login</h1>
+		<label>Email</label>
+		<input type="email" formControlName="name" class="form-control" placeholder="Email address" required
+			autofocus="">
+		<div *ngIf="myForm.controls.name.dirty && myForm.controls.name.invalid" class="alert alert-danger">
+			<div *ngIf="myForm.controls.name.errors.dirty">
+				*Required
+			</div>
+		</div>
+		<br />
+		<label>Password</label>
+
+		<input type="password" formControlName="pass" class="form-control" placeholder="Password" required>
+		<div *ngIf="myForm.controls.pass.touched && myForm.controls.pass.invalid" class="alert alert-danger">
+			<div *ngIf="myForm.controls.pass.errors.required">
+				*Required
+			</div>
+		</div>
+		<br />
+		<button class="btn btn-primary btn-block" type="submit" [disabled]="myForm.invalid"><i
+				class="fas fa-sign-in-alt"></i> Sign in</button>
+				<br/>
+				<button class="btn btn-secondary " routerLink="signup"><i class="fab fa-align-center    "></i>Sign Up</button>
+	</form>
+	<br>
+	
+	<hr>
+</div>

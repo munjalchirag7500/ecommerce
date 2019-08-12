@@ -13,7 +13,6 @@ myForm:FormGroup
 resData;
 errMsg;
   constructor(private fb:FormBuilder , private lser:LoginService, private router :Router) { }
-
 loginData() {
     // body...
     let formData=this.myForm.getRawValue();

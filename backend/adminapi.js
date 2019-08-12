@@ -60,20 +60,27 @@ let app = express();
 app.use(cors());
 app.use(bodyParser.json());
 // login
+app.post('/api/signup',function(req,res){
+  let username= req.body.name;
+  let password = sha1(req.body.pass);
+  let ins = new adminLogin({'username':username,'password':password})
+	ins.save(function(err){
+		if (err) {
+      res.json({'err':1,'msg':'Not Saved'});
+    }
+		else
+		{
+			res.json({'err':0,'msg':'Data saved'});
+		}
+	})
+})
 app.post('/api/adminlogin',function(req,res) {
 	// body...
 	let username= req.body.name;
 	let password = sha1(req.body.pass);
 
 	// //inserting data
-	// let ins = new adminLogin({'username':username,'password':password})
-	// ins.save(function(err){
-	// 	if (err) {console.log("Error while saving data");}
-	// 	else
-	// 	{
-	// 		res.json({'msg':'data saved'})
-	// 	}
-	// })
+
 	adminLogin.find({'username':username,'password':password},function(err,data){
 		if(err){
 			res.json({'msg':'error occured'})

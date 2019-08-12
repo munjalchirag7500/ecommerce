@@ -15,8 +15,10 @@ import { EditproductComponent } from './dashboard/products/editproduct/editprodu
 import { ChatComponent } from './dashboard/chat/chat.component';
 import { ReplyComponent } from './dashboard/reply/reply.component';
 import { UserlogComponent } from './pages/userlog/userlog.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
+	{path:'signup',component:SignupComponent},	
 {path:'',component:LoginComponent},
 {path:'dashboard',component:DashboardComponent,canActivate:[DashbrdGuard] ,children:[
 		{path:'',component:DefaultComponent},
